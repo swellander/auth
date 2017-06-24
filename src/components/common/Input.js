@@ -1,17 +1,19 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { TextInput, View, Text } from 'react-native';
 
-const Input = ({ label, value, onChangeText }) => {
-  const { Input, labelStyle, containerStyle } = styles;
+const Input = ({ label, value, onChangeText, placeholder }) => {
+  const { inputStyle, labelStyle, containerStyle, secureTextEntry } = styles;
 
   return (
     <View style={containerStyle}>
       <Text style={labelStyle}>{label}</Text>
       <TextInput
+        placeholder={placeholder}
+        autoCorrect={false}
+        secureTextEntry={secureTextEntry}
+        style={inputStyle}
         value={value}
         onChangeText={onChangeText}
-        style={{height:20, width:100}}
-        style={inputStyle}
       />
     </View>
   )
@@ -35,7 +37,7 @@ const styles = {
     height: 40,
     flex: 1,
     flexDirection: 'row',
-    align: 'center'
+    alignItems: 'center'
   }
 };
 export { Input };
